@@ -54,6 +54,7 @@
                         <li class="active" data-view="home">📊 Panel General</li>
                         <li data-view="enroll">📝 Inscripciones</li>
                         <li data-view="grades">📋 Registro de Notas</li>
+                        <li data-view="centralizer">📑 Centralizador de Notas</li>
                         <li data-view="certify">🎓 Certificación</li>
                         <li id="logout-btn">🚪 Cerrar Sesión</li>
                     </ul>
@@ -142,6 +143,31 @@
             </div>
             <div id="cert-result" class="cert-display">
                 <!-- Result here -->
+            </div>
+        </div>
+    </template>
+
+    <template id="view-centralizer">
+        <div class="view-card glass-card fade-in wide-view">
+            <div class="report-header">
+                <h3>CENTRALIZADOR DE CALIFICACIONES - CEA</h3>
+                <button onclick="window.print()" class="btn-glow small-btn">🖨️ Imprimir Registro Oficial</button>
+            </div>
+            <div class="table-scroll">
+                <table id="centralizer-table" class="premium-table">
+                    <thead>
+                        <tr>
+                            <th>RUDE</th>
+                            <th>Estudiante</th>
+                            <th>CI</th>
+                            <th>Área</th>
+                            <th>Promedio Gral</th>
+                            <th>Mód. Aprobados</th>
+                            <th>Estado Final</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
             </div>
         </div>
     </template>
