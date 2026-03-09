@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SISTEMA EDUCATIVO RUBEN - CEA</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- Login Section -->
+        <section id="login-section" class="auth-wrapper">
+            <div class="glass-card auth-card">
+                <div class="brand">
+                    <h1>CEA RUBEN</h1>
+                    <p>Sistema de Gestión Académica Profesional</p>
+                </div>
+                <form id="login-form">
+                    <div class="input-field">
+                        <label>Email Institucional</label>
+                        <input type="text" id="username" placeholder="cargo_nombre@educaruben.com" required>
+                    </div>
+                    <div class="input-field">
+                        <label>Contraseña (N° Carnet)</label>
+                        <input type="password" id="password" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" class="btn-glow">Iniciar Sesión</button>
+                </form>
+                <div class="auth-footer">
+                    <p>Calendario Académico: 200 Días Hábiles</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard-section" class="dashboard-wrapper hidden">
+            <aside class="sidebar-glass">
+                <div class="sidebar-header">
+                    <h2>RUBEN EDU</h2>
+                </div>
+                <nav>
+                    <ul id="menu-list">
+                        <li class="active" data-view="home">📊 Panel General</li>
+                        <li data-view="enroll">📝 Inscripciones</li>
+                        <li data-view="grades">📋 Registro de Notas</li>
+                        <li data-view="certify">🎓 Certificación</li>
+                        <li id="logout-btn">🚪 Cerrar Sesión</li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <main class="main-content">
+                <header class="top-bar">
+                    <div class="user-info">
+                        <span id="user-role-badge" class="badge">Rol</span>
+                        <h2 id="welcome-msg">Bienvenido</h2>
+                    </div>
+                </header>
+
+                <div id="view-container" class="view-content">
+                    <!-- Dynamic views loaded here -->
+                </div>
+            </main>
+        </section>
+    </div>
+
+    <!-- Templates -->
+    <template id="view-grades">
+        <div class="view-card glass-card fade-in">
+            <h3>Registro de Calificaciones (Humanística / Técnica)</h3>
+            <div class="grade-form-grid">
+                <div class="input-field">
+                    <label>ID Estudiante</label>
+                    <input type="number" id="grade-student-id">
+                </div>
+                <div class="input-field">
+                    <label>Módulo</label>
+                    <select id="grade-module-id"></select>
+                </div>
+                <div class="input-field">
+                    <label>Nota Especializada (0-100)</label>
+                    <input type="number" id="grade-score" min="0" max="100">
+                </div>
+                <button onclick="submitGrade()" class="btn-glow">Guardar Nota</button>
+            </div>
+            
+            <div class="table-scroll">
+                <table id="grades-table" class="premium-table">
+                    <thead>
+                        <tr>
+                            <th>Estudiante</th>
+                            <th>Módulo</th>
+                            <th>Nota</th>
+                            <th>Estado</th>
+                            <th>Materia/Nivel</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </template>
+
+    <template id="view-certify">
+        <div class="view-card glass-card fade-in">
+            <h3>Control de Titulación Automática</h3>
+            <div class="cert-search">
+                <input type="number" id="cert-student-id" placeholder="ID del Estudiante">
+                <button onclick="checkCert()" class="btn-glow">Verificar Titulación</button>
+            </div>
+            <div id="cert-result" class="cert-display">
+                <!-- Result here -->
+            </div>
+        </div>
+    </template>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
