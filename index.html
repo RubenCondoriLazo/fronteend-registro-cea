@@ -78,21 +78,42 @@
     <!-- Templates -->
     <template id="view-grades">
         <div class="view-card glass-card fade-in">
-            <h3>Registro de Calificaciones (Humanística / Técnica)</h3>
+            <h3>Registro de Calificaciones Profesional</h3>
             <div class="grade-form-grid">
                 <div class="input-field">
                     <label>ID Estudiante</label>
-                    <input type="number" id="grade-student-id">
+                    <input type="number" id="grade-student-id" placeholder="Ej: 101">
                 </div>
                 <div class="input-field">
-                    <label>Módulo</label>
-                    <select id="grade-module-id"></select>
+                    <label>Área Académica</label>
+                    <select id="grade-area-id" onchange="handleAreaChange()">
+                        <option value="">Seleccione Área</option>
+                        <option value="Humanistica">Humanística</option>
+                        <option value="Tecnica">Técnica</option>
+                    </select>
+                </div>
+                <div id="level-field-container" class="input-field hidden">
+                    <label>Nivel Técnico</label>
+                    <select id="grade-level-id" onchange="loadCeaModules()">
+                        <option value="">Seleccione Nivel</option>
+                        <option value="1">Técnico Básico</option>
+                        <option value="2">Técnico Auxiliar</option>
+                        <option value="3">Técnico Medio</option>
+                    </select>
                 </div>
                 <div class="input-field">
-                    <label>Nota Especializada (0-100)</label>
+                    <label>Módulo / Materia</label>
+                    <select id="grade-module-id">
+                        <option value="">-- Primero seleccione área --</option>
+                    </select>
+                </div>
+                <div class="input-field">
+                    <label>Nota Final (0-100)</label>
                     <input type="number" id="grade-score" min="0" max="100">
                 </div>
-                <button onclick="submitGrade()" class="btn-glow">Guardar Nota</button>
+                <div class="btn-container" style="grid-column: span 2;">
+                    <button onclick="submitGrade()" class="btn-glow">Guardar en Registro Central</button>
+                </div>
             </div>
             
             <div class="table-scroll">
@@ -103,7 +124,7 @@
                             <th>Módulo</th>
                             <th>Nota</th>
                             <th>Estado</th>
-                            <th>Materia/Nivel</th>
+                            <th>Área / Nivel</th>
                         </tr>
                     </thead>
                     <tbody></tbody>
